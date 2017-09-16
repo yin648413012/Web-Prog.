@@ -1,7 +1,6 @@
 <?php
 //
-// This is not required, but it is recommended you decompose
-// this problem into stand-alone tested functions.
+
 //
 include 'functions.php';
 

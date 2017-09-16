@@ -25,7 +25,7 @@ class DatabaseAdaptor {
 
 // return an array with all roles from all movies
   public function getAllMoviesAndRoles() {
-    //  TODO: Return an array containing all roles in all movies.
+    // Return an array containing all roles in all movies.
      $stmt = $this->DB->prepare ( "SELECT movies.name, roles.actor_id FROM roles JOIN movies ON roles.movie_id = movies.id JOIN actors on roles.actor_id = actors.id;");
     // $stmt = $this->DB->prepare ( "SELECT actors.first_name, actors.last_name FROM actors JOIN roles ON roles.actor_id = movies.id JOIN actors on roles.actor_id = actors.id;");
      $stmt->execute ();
@@ -41,7 +41,7 @@ class DatabaseAdaptor {
   $theDBA = new DatabaseAdaptor ();
   $arr = $theDBA->getAllMoviesAndRoles ();
   print_r($arr);
-  // TODO: Write the code to print all movies immediately followed
+  // print all movies immediately followed
   // by all actors and their roles in that movie.
   for ($i=0; $i < count($arr); $i++) {
     $arrI = $arr[$i];

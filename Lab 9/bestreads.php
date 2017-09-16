@@ -1,6 +1,5 @@
 <?php
-// TODO: Complete this file to send a PHP encoded as JSON.
-// You must use json_encode($array)
+// send a PHP encoded as JSON.
 $dir = "books/";
 $arr = [];
 $newArr = [];
