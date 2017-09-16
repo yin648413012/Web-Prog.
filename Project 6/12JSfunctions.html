@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>12 JS Functions</title>
+</head>
+<body>
+
+<h4>This file contains twelve function specs, 12 stubs, and a few console.asserts</h4>
+<h4>Use the console of the browser to find errors, output and failing assserts</h4>
+<h4>Use console.assert(boolean) for test cases and console.log(string) for debugging</h4>
+
+<script>
+/*
+ * 12 JavaScript functions requiring functions, console.assert, selection, repetition,
+ * strings, and arrays. The code contains a few asserts to shw the syntax.  You should add
+ * many more asserts to tests. It is important to be able to write your own tests.
+ *
+ * Programmer: Alec Mire
+ */
+
+// 1) howSwedish
+// ABBA is a band, they have many songs including Dancing Queen, and
+// Fernando. ABBA is actually a Swedish band, so if we wanted to find
+// out howSwedish a String is, we could simply find out how many times
+// the String contains the substring "abba". We want to look for this
+// substring in a case insensitive manner. So "abba" counts, and so
+// does "aBbA". We also want to check for overlapping abba's such as
+// in the String "abbAbba" that contains "abba" twice.
+//
+// howSwedish("AbBa a b b a") returns 1
+// howSwedish("abbabba!") returns 2
+function howSwedish(str) {
+  var count = 0;
+  str = str.toUpperCase();
+  for (var i=0; i <= str.length - 4; i++) {
+    res = str.slice(i, i+4);
+    if ('ABBA' === res) {
+      count += 1;
+    }
+  }
+  return count;
+  // Use str.length()
+  // Use + instead of . for concatenation
+  // Do NOT use $ to declare variables, but use var
+}
+console.log ( 'Should see 2: ', howSwedish ( 'abbabba' ));
+// The following asserts will fail until howSwedish is fixed
+console.assert ( 0 == howSwedish ( 'no' ) );
+console.assert ( 1 == howSwedish ( 'axxc AbBa Xx' ) );
+console.assert ( 2 == howSwedish ( 'abbabba' ) );
+console.assert ( 1 == howSwedish ( 'abbc AbBa Xx' ) );
+console.assert ( 2 == howSwedish ( 'abbAbba' ) );
+console.assert ( 0 == howSwedish ( 'axxc AbB3 Xx' ) );
+console.assert ( 1 == howSwedish ( 'abba bba' ) );
+
+
+
+// 2)  mirrorEnds
+// Complete method mirrorEnds that given a string, looks for a mirror
+// image (backwards) string at both the beginning and end of the given string.
+// In other words, zero or more characters at the very beginning of the given
+// string, and at the very end of the string in reverse order (possibly overlapping).
+// For example, "abXYZba" has the mirror end "ab".
+//
+
+//
+function mirrorEnds(str) {
+  var end = '';
+  var reverse = str.split('').reverse().join('');
+  if (reverse == str) {
+    return str;
+  }
+  for (var i=0; i < Math.ceil(str.length / 2); i++) {
+    var newStr = str.slice(str.length - i, str.length);
+    if (str.slice(0, i) === newStr.split('').reverse().join('')) {
+      end = str.slice(0, i);
+    }
+  }
+  return end;
+}
+
+console.assert("" == mirrorEnds(""));
+console.assert("" == mirrorEnds("abcde"));
+console.assert("a" == mirrorEnds("abca"));
+console.assert("aba" ==  mirrorEnds("aba"));
+console.assert("aba" ==  mirrorEnds("aba"));
+console.assert("aa" == mirrorEnds("aa"));
+console.assert("aaa" == mirrorEnds("aaa"));
+console.assert("asdfghjkl" == mirrorEnds("asdfghjklmjlkjhgfdsa"));
+console.assert("asdfg" == mirrorEnds("asdfgjhgfdsa"));
+console.assert("asdfghjk" == mirrorEnds("asdfghjkkmjlkjhgfdsa"));
+console.assert("asdfghj" == mirrorEnds("asdfghjalmjlkjhgfdsa"));
+console.assert("asdfgh" == mirrorEnds("asdfghdjklmjlkjhgfdsa"));
+console.assert("asdf" == mirrorEnds("asdfasdmjlkjhgfdsa"));
+console.assert("a" == mirrorEnds("a"));
+console.assert("abba" == mirrorEnds("abba"));
+console.assert("abcba" == mirrorEnds("abcba"));
+
+// 3) isStringSorted
+// Given a String, return true if the letters are in ascending order.
+// Note: 'a' < 'b' and '5' < '8'
+// isStringSorted("") returns true
+// isStringSorted("a") returns true
+// isStringSorted("abbcddef") returns true
+// isStringSorted("123456") returns true
+// isStringSorted("12321") returns false
+function isStringSorted(str) {
+  for (var i = 0; i < str.length; i++) {
+    str = str.replace(' ', '');
+  }
+  console.log(str);
+  if (str == '') {
+    return true;
+  }
+  if (str.length == 1) {
+    return true;
+  }
+  if (str.length == 2) {
+    if (str.charAt(0) < str.charAt(1)) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+  for (var i=0; i <= str.length - 2; i++) {
+    if (str.charAt(i+1) < str.charAt(i)) {
+      return false;
+    }
+  }
+  return true;
+}
+
+
+
+console.assert(true == isStringSorted(""));
+console.assert(true == isStringSorted("a"));
+console.assert(true == isStringSorted("ab"));
+console.assert(false == isStringSorted("ba"));
+console.assert(false == isStringSorted("aca"));
+console.assert(true == isStringSorted("abbcddef"));
+console.assert(false == isStringSorted("12ab3"));
+console.assert(true == isStringSorted("123456"));
+console.assert(false == isStringSorted("12321"));
+console.assert(true == isStringSorted("  123"));
+console.assert(true == isStringSorted("123  4"));
+console.assert(true == isStringSorted("1 23   "));
+
+// 4) maxBlock
+// Given a string, return the length of the largest "block" in the string.
+// A block is a run of adjacent chars that are the same.
+// maxBlock("hoopla") returns 2
+// maxBlock("abbCCCddBBBxx") returns 3
+// maxBlock("") returns 0
+//
+function maxBlock(str) {
+  var temp = 1;
+  var max = 1;
+  if (str == '' || str == ' ') {
+    return 0;
+  }
+  for (var i=0; i < str.length - 1; i++) {
+    if (str.charAt(i) == str.charAt(i+1)) {
+      ++temp;
+    }
+    else {
+      if (temp >= max) {
+        max = temp;
+        temp = 1;
+      }
+      else {
+        temp = 1;
+      }
+    }
+  }
+  return max;
+}
+
+console.assert ( 3 == maxBlock ( "abbCCCddBBBxx" ) );
+console.assert ( 1 == maxBlock ( "abBc" ) );
+console.assert ( 3 == maxBlock ( "abbCCCddBBxx" ) );
+console.assert ( 3 == maxBlock ( "abbCCddBBBxx" ) );
+console.assert ( 4 == maxBlock ( "abbCCCddddBBBxx" ) );
+console.assert ( 3 == maxBlock ( "abbCCCddBBBxx" ) );
+console.assert ( 5== maxBlock ( "abb55555CCCddBBBxx" ) );
+console.assert ( 0 == maxBlock ( "" ) );
+console.assert ( 0 == maxBlock (' ') );
+
+
+
+
+// 5) isArraySorted
+// Given an array , return true if the element are in ascending order.
+// Note: 'abe' < 'ben' and 5 > 3
+// Precondition arr has all the same type of elements
+function isArraySorted(arr) {
+  for (var i=0; i < arr.length - 1; i++) {
+    if (arr[i] > arr[i+1]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+console.assert(true == isArraySorted([1,2,2,99]))
+console.assert(false == isArraySorted([1,3,2,3,4]))
+console.assert(true == isArraySorted([" a", "b ", "c", "d", "d"]))
+
+
+
+
+
+
+// 6) numberOfPairs
+// Return the number of times a pair occurs in array. A pair is any two String values that are equal (case
+// sensitive) in consecutive array elements. The array may be empty or have only one element. In both of
+// these cases, return 0.
+//
+// numberOfPairs( array('a', 'b', 'c') ) returns 0
+// numberOfPairs( array('a', 'a', 'a') ) returns 2
+// assert(2 == numberOfPairs( array('a', 'a', 'b', 'b' ) ) );
+// numberOfPairs( array ( ) ) returns 0
+// numberOfPairs( array ('a') ) returns 0
+// Precondition: arr has all the same type of elements
+function numberOfPairs(arr) {
+  var pairs = 0;
+  if (arr.length == 0 || arr.length == 1) {
+    return 0;
+  }
+  for (var i=0; i < arr.length - 1; i++) {
+    if (arr[i] == arr[i+1]) {
+      ++pairs;
+    }
+  }
+  return pairs;
+}
+
+console.assert( 0 == numberOfPairs(['a', 'b', 'c'] ) );
+console.assert ( 2 == numberOfPairs(['a', 'a', 'a']) );
+console.assert(2 == numberOfPairs(['a', 'a', 'b', 'b' ]) );
+console.assert(2 == numberOfPairs(['a', 'a', 'b', 'b', 'a' ]) );
+console.assert(3 == numberOfPairs(['a', 'a', 'a', 'b', 'b', 'a' ]) );
+console.assert(4 == numberOfPairs(['a', 'a', 'a', 'a', 'b', 'b', 'a' ]) );
+console.assert(2 == numberOfPairs(['1', '1', '2', '2' ]) );
+console.assert(2 == numberOfPairs(['1', '1', '2', '2', '1' ]) );
+console.assert(3 == numberOfPairs(['1', '1', '1', '2', '2', '1' ]) );
+console.assert(4 == numberOfPairs(['1', '1', '1', '1', '2', '2', '1' ]) );
+console.assert( 0 == numberOfPairs( []) );
+console.assert( 0 == numberOfPairs( ['a']) );
+
+
+
+
+
+// 7) frequency(array)
+// Given an  array of integers in the range of 0..10 (like quiz scores),
+// return an array of 11 integers where the first value (at index 0) is the
+// number of 0s in the array argument, the second value (at index 1) is the number
+// of ones in the array and the 11th value (at index 10) is the number of tens in the array.
+//
+// Precondition: array has valid ints in the range of 0..10
+function frequency(array) {
+  var arr2 = array;
+  array = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  var count = 0;
+  for (var i=0; i < array.length; i++) {
+    count = 0;
+    for (var j=0; j < arr2.length; j++) {
+      if (arr2[j] == i) {
+        ++count;
+      }
+    }
+    array[i] = count;
+  }
+  return array;
+}
+
+var arr3 = frequency([1,
+1,
+4,
+4,
+4,
+9,
+9,
+9,
+9,
+10,
+0,
+0,
+0,
+0,
+0]);
+
+console.assert(5 == arr3[0]);
+console.assert(1 == arr3[10]);
+console.assert(2 == arr3[1]);
+console.assert(0 == arr3[2]);
+console.assert(0 == arr3[3]);
+console.assert(3 == arr3[4]);
+console.assert(0 == arr3[5]);
+console.assert(0 == arr3[6]);
+console.assert(0 == arr3[7]);
+console.assert(0 == arr3[8]);
+console.assert(4 == arr3[9]);
+
+
+
+// 8) shiftNTimes(array, numShifts)
+//
+// Modify array so it is "left shifted" n times -- so shiftNTimes(array(6, 2, 5, 3), 1)
+// changes the array argument to (2, 5, 3, 6) and shiftNTimes(array(6, 2, 5, 3), 2)
+// changes the array argument to (5, 3, 6, 2). You must modify the array argument by
+// changing the parameter array inside method shiftNTimes. A change to the
+// parameter inside the method shiftNTimes changes the argument if the
+// argument is passed by reference, that means it is preceded by an ampersand &
+//
+// shiftNTimes( array(1, 2, 3, 4, 5, 6, 7), 3 ) modifies array to ( 4, 5, 6, 7, 1, 2, 3 )
+// shiftNTimes( array(1, 2, 3), 5) modifies array to (3, 1, 2)
+// shiftNTimes( array(3), 5) modifies array to (3)
+//
+function shiftNTimes(array, numShifts) {
+  var temp = 0;
+  var last_num = 0;
+  for (var i=0; i < numShifts; i++) {
+    for (j=0; j < array.length - 1; j++) {
+      if (j == 0) {
+        last_num = array[0];
+      }
+      array[j] = array[j+1];
+    }
+    array[array.length - 1] = last_num;
+  }
+}
+
+arr =[1,
+    2,
+    3,
+    4];
+shiftNTimes ( arr, 2 );
+console.assert(3 == arr[0]);
+console.assert(4 == arr[1]);
+console.assert(1 == arr[2]);
+console.assert(2 == arr[3]);
+
+// 9) addToSet
+// Complete method addToSet(set, number) such that number is added
+// at the end of the array parameter set only if it does not exist alreay.
+//
+// Precondition: each argument is alway a number.  No type mixing
+function addToSet(set, number) {
+  for (var i = 0; i < set.length; i++) {
+    if (number == set[i]) {
+      return;
+    }
+  }
+  set.push(number);
+
+}
+
+set = [];
+addToSet(set, 5)
+addToSet(set, 4)
+addToSet(set, 4)
+addToSet(set, 3)
+addToSet(set, 3)
+addToSet(set, 2)
+addToSet(set, 2)
+
+console.assert(5 == set[0]);
+console.assert(4 == set[1]);
+console.assert(3 == set[2]);
+console.assert(2 == set[3]);
+console.assert(4, set.length)
+
+
+// 10)  Say that a "clump" in an array is a series of 2 or more adjacent elements of the same value.
+// Return the number of clumps in the given array.
+//
+console.assert(2 == countClumps( [1, 2, 2, 3, 4, 4 ] ));
+console.assert(2 == countClumps( [1, 1, 2, 1, 1 ] ));
+console.assert(1 == countClumps([1, 1, 1, 1, 1 ] ));
+console.assert(0 == countClumps([1, 2, 3] ));
+console.assert(0 == countClumps([2] ));
+
+function countClumps(arr) {
+  var count = 0;
+  var count2 = 0;
+  var meta_count = 0;
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] == arr[i+1]) {
+      count += 1
+    }
+    else {
+      if (count > 0) {
+        meta_count += 1;
+        count = 0;
+      }
+    }
+  }
+  return meta_count;
+}
+
+console.assert(0 == countClumps([ 1, 2, 3]));
+console.assert(1 == countClumps([ 1, 2, 2, 2, 2, 3]));
+
+
+// 11) evenOdd(array)
+//
+// Modify array that contains the exact same numbers as the given array, but rearranged so that all
+// the even numbers come before all the odd numbers. Other than that, the numbers can be in any order.
+//
+// evenOdd([1, 0, 1, 0, 0, 1, 1]) changes the array to [0, 0, 0, 1, 1, 1, 1]
+// evenOdd([3, 3, 2]) changes the array to [2, 3, 3]
+// evenOdd([2, 2, 2]) changes the array to [2, 2, 2]
+//
+// Precondition: All array elements are integers (whole nmbers)
+
+// ASSERTS NOT WORKING WHEN COMPARING THE ENTIRE LIST, BUT THE FUNCTION WORKS
+function evenOdd(array) {
+  var temp = 0;
+  // for (var i = 0; i < array.length; i++) {
+  //   if (array[i] %2 != 0) {
+  //     temp = array[i];
+  //     array.splice(i, 1);
+  //     array.push(temp);
+  //   }
+  // }
+
+  for (var i = 0; i < array.length; i++) {
+    if (array[i] % 2 != 0) {
+      for (var j = i; j < array.length; j++) {
+        if (array[j] % 2 == 0) {
+          temp = array[i];
+          array[i] = array[j];
+          array[j] = temp;
+        }
+      }
+    }
+  }
+  ///array = array.concat(newArr);
+  console.log(array);
+}
+
+// ASSERTS NOT WORKING WHEN COMPARING THE ENTIRE LIST, BUT THE FUNCTION WORKS
+var arr5 = [1, 0, 1, 0, 0, 1, 1];
+evenOdd(arr5);
+console.log(arr5);
+console.assert(arr5[0] == 0);
+console.assert(arr5[1] == 0);
+console.assert(arr5[2] == 0);
+console.assert(arr5[3] == 1);
+console.assert(arr5[4] == 1);
+console.assert(arr5[5] == 1);
+console.assert(arr5[6] == 1);
+// ASSERTS NOT WORKING WHEN COMPARING THE ENTIRE LIST, BUT THE FUNCTION WORKS
+
+
+
+
+
+// 12) writeAshape
+//
+// This method must generate a triangle that is written to the web page.
+// Here is a triangle of height 6. There are leading spaces. The dots
+// are present to keep the chs from floating left if you format this page.
+// Do not log ...., instead log four spaces.
+//
+// .....x
+// ....xxx
+// ...xxxxx
+// ..xxxxxxx
+// .xxxxxxxxx
+// xxxxxxxxxxx
+//
+// Precondition: n >= 1 and ch is not a empty string or a space
+function writeAShape(n, ch) {
+    for (var i=0; i < n; i++) {
+     for (var j=0; j < n - i; j++) {
+       document.write("&ensp;");
+     }
+    for (var k=0; k <= 2*i; k++) {
+      document.write(ch);
+    }
+    for (var j=0; j < n - i; j++) {
+      if (j = n - i - 1) {
+        document.write(" <br>");
+      }
+      else {
+        document.write(" ");
+      }
+    }
+  }
+}
+
+writeAShape(6, "X");
+</script>
+
+</body>
+</html>

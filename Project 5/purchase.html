@@ -1,0 +1,92 @@
+<!-- NOTE:
+Programmer: Alec Mire
+ -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href="styles.css" type="text/css" rel="stylesheet" />
+    <title>Purchase Form</title>
+  </head>
+  <body>
+    <h2>Local Coffee Delivery!</h2>
+    (We only deliver black. More Flavors coming soon!)
+    <div class="whole_thing">
+    <form action='http://localhost/purchase/receipt.php' method='post'>
+        First Name <input id="input" type="text" name="firstName" pattern="[A-Za-z]*" required><br><br>
+        Last Name  <input id="input" type="text" name="lastName" pattern="[A-Za-z]*" required><br><br>
+        Phone      <input id="input" type="text" name="phoneNumber" pattern="^(\+0?1\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$" required/><br><br>
+        City       <input id="input" type="text" name="city" pattern="[A-Z a-z]*" required/><br><br>
+        State
+        <select name="state" id="input" required>
+          <option>Alabama</option>
+          <option>Alaska</option>
+          <option>Arizona</option>
+          <option>Arkansas</option>
+          <option>California</option>
+          <option>Colorado</option>
+          <option>Connecticut</option>
+          <option>Delaware</option>
+          <option>Florida</option>
+          <option>Georgia</option>
+          <option>Hawaii</option>
+          <option>Idaho</option>
+          <option>Illinois</option>
+          <option>Indiana</option>
+          <option>Iowa</option>
+          <option>Kansas</option>
+          <option>Kentucky</option>
+          <option>Louisiana</option>
+          <option>Maine</option>
+          <option>Maryland</option>
+          <option>Massachusetts</option>
+          <option>Michigan</option>
+          <option>Minnesota</option>
+          <option>Mississippi</option>
+          <option>Missouri</option>
+          <option>Montana</option>
+          <option>Nebraska</option>
+          <option>Nevada</option>
+          <option>New Hampshire</option>
+          <option>New Jersey</option>
+          <option>New Mexico</option>
+          <option>New York</option>
+          <option>North Carolina</option>
+          <option>North Dakota</option>
+          <option>Ohio</option>
+          <option>Oklahoma</option>
+          <option>Oregon</option>
+          <option>Pennsylvania</option>
+          <option>Rhode Island</option>
+          <option>South Carolina</option>
+          <option>South Dakota</option>
+          <option>Tennessee</option>
+          <option>Texas</option>
+          <option>Utah</option>
+          <option>Vermont</option>
+          <option>Virginia</option>
+          <option>Washington</option>
+          <option>West Virginia</option>
+          <option>Wisconsin</option>
+          <option>Wyoming</option>
+        </select><br><br>
+        ZIP<input type="text" id="input" name="zip" pattern="[0-9]{5}" required/><br><br>
+        <br><fieldset><legend>Size</legend>
+        <input type="radio" name="size" value="Small" required/>Small $2.00<br>
+        <input type="radio" name="size" value="Medium" required/>Medium $2.65<br>
+        <input type="radio" name="size" value="Large" required/>Large $2.99<br>
+      </fieldset><br><br>
+      Quantity (1...5)
+      <input type="number" id="input" name="quantity" pattern="[1-5]{1}" required/><br><br>
+
+        <input type="submit" id="input" value="Continue"/>
+    </form>
+  </div>
+    <h2>Alec Mire's Homebrew</h2>
+    <script>
+  (function (w,i,d,g,e,t,s) {w[d] = w[d]||[];t= i.createElement(g);
+    t.async=1;t.src=e;s=i.getElementsByTagName(g)[0];s.parentNode.insertBefore(t, s);
+  })(window, document, '_gscq','script','//widgets.getsitecontrol.com/80624/script.js');
+</script>
+  </body>
+</html>

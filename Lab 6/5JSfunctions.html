@@ -1,0 +1,228 @@
+<!--
+Programmer: Alec Mire
+
+Due: 10:00pm Friday 24-Feb-2017
+
+Complete the five JavaScript functions requiring ifs and for loops.
+
+The first four are the same functions from the Lab 4: Four PHP Functions
+
+1) minOfThree(a, b, c)
+2) romanNumeral(ch)
+3) sumOfFirstInts(n)
+4) factorial(n)
+5) beHappy(str)
+
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Five JS functions</title>
+</head>
+<body>
+
+
+<script>
+  // Recommended: Write many more test cases. We provided
+  // one for each function to show you need parenthesis.
+  //
+  document.write('<h4>Should have 30 or more test cases showing true. We have 56.</h4>' );
+  //
+  //
+  // 1) minOfThree
+  //
+  // Given three arguments of the same type, return the
+  // one that is less than or equal to the other two.
+  //
+  // minOfThree(1, 2, 3) returns 1
+  // minOfThree('three', 'two', 'one') returns one
+  // minOfThree(5.23, 5.23, 5.23) returns 5.23
+  //
+  function minOfThree(a, b, c) {
+  	return Math.min(a, b, c);
+  }
+  // One test case. Your browser should show true, not false
+  document.write( (minOfThree(888, 2222, 444) == 444) + '<br>'); //ASSERTION; TEST CASE
+  document.write( (minOfThree(888, -5, 444) == -5) + '<br>');
+  document.write( (minOfThree(1, -1, 444) == -1) + '<br>');
+  document.write( (minOfThree(4, 2222, 444) == 4) + '<br><br>');
+
+
+  // 2) romanNumeral()
+  //
+  // Complete the free function romanNumeral that returns the numeric
+  // equivalent of an upper- or lower-case Roman numeral, which is a char.
+  // Roman numerals and their decimal equivalents are
+  // 'I' (or 'i') = 1
+  // 'V' (or 'v') = 5
+  // 'X' (or 'x') = 10
+  // 'L' (or 'l') = 50
+  // 'C' (or 'c') = 100
+  // 'D' (or 'd') = 500
+  // 'M' (or 'm') = 1,000
+  //
+  // If the input is not a valid Roman numeral, return -1
+  function romanNumeral(ch) {
+    if (typeof ch != "string") {
+      return -1;
+    }
+    str = ch.toLowerCase();
+  	if(str == "i"){
+      return 1;
+    }
+    else if (str == "v"){
+      return 5;
+    }
+    else if (str == "x"){
+      return 10;
+    }
+    else if (str == "l"){
+      return 50;
+    }
+    else if (str == "c"){
+      return 100;
+    }
+    else if (str == "d"){
+      return 500;
+    }
+    else if (str == "m"){
+      return 1000;
+    }
+    else {
+      return -1
+    }
+  }
+  // One test case. Your browser should show true, not false
+  document.write( (romanNumeral('x') == 10)  + '<br>');
+  document.write( (romanNumeral('i') == 1)  + '<br>');
+  document.write( (romanNumeral('v') == 5)  + '<br>');
+  document.write( (romanNumeral('l') == 50)  + '<br>');
+  document.write( (romanNumeral('c') == 100)  + '<br>');
+  document.write( (romanNumeral('d') == 500)  + '<br>');
+  document.write( (romanNumeral('m') == 1000)  + '<br>');
+  document.write( (romanNumeral('X') == 10)  + '<br>');
+  document.write( (romanNumeral('I') == 1)  + '<br>');
+  document.write( (romanNumeral('V') == 5)  + '<br>');
+  document.write( (romanNumeral('L') == 50)  + '<br>');
+  document.write( (romanNumeral('C') == 100)  + '<br>');
+  document.write( (romanNumeral('D') == 500)  + '<br>');
+  document.write( (romanNumeral('f') == -1)  + '<br>');
+  document.write( (romanNumeral('xi') == -1)  + '<br>');
+  document.write( (romanNumeral(5) == -1)  + '<br>');
+  document.write( (romanNumeral('M') == 1000)  + '<br><br>');
+
+
+
+
+  // 3) sumOfFirstInts
+  //
+  // Return the sum of the first n integers
+  // sumOfFirstInts(3) == 1 + 2 + 3
+  // Precondition: n >= 0 (no negatives, integers only
+  function sumOfFirstInts(n) {
+    var sum = 0;
+  	for (var i = 0; i <= n; i++) {
+  	  sum += i;
+  	}
+    return sum;
+  }
+  // One test case. Your browser should show true, not false
+  document.write( (sumOfFirstInts(2) == 3)  + '<br>');
+  document.write( (sumOfFirstInts(3) == 6)  + '<br>');
+  document.write( (sumOfFirstInts(4) == 10)  + '<br>');
+  document.write( (sumOfFirstInts(5) == 15)  + '<br>');
+  document.write( (sumOfFirstInts(6) == 21)  + '<br><br>');
+
+
+
+
+  // 4) factorial
+  //
+  // Given an integer n, return n!
+  // factorial(0) returns 1
+  // factorial(1) returns 1
+  // factorial(2) returns 2 * 1
+  // factorial(3) returns 3 * 2 * 1
+  // factorial(4) returns 4 * 3 * 2 * 1
+  // Precondition: n >= 0 and is an integer
+  function factorial(n) {
+    var sum = 1;
+  	for (var i = 1; i <= n; i++) {
+  	  sum *= i;
+  	}
+  	return sum;
+  }
+
+  // One test case. Your browser should show true, not false
+  document.write( (factorial(2) == 2)  + '<br>');
+  document.write( (factorial(3) == 6)  + '<br>');
+  document.write( (factorial(4) == 24)  + '<br>');
+  document.write( (factorial(5) == 120)  + '<br><br>');
+
+
+
+
+  // 5) beHappy
+  //
+  // We'll say that a lowercase 'b' in a string is 'happy'
+  // if there is another 'b' immediately to its left or right.
+  // Return true if all the b's in the given string are happy.
+  //
+  // beHappy('xxbxx') returns false
+  // beHappy('xxbbxx') returns true
+  // beHappy('xxbbbxyz') returns true
+  // beHappy('qrbbstbuv') returns false
+  //
+  // beHappy('b') returns false
+  // beHappy('') returns true
+  //
+  // A 'b' at index 0 can not have another 'b' to its left
+  // beHappy("bxxbbbxx") returns false
+  //
+  // A 'b' at the last index can not need have another to its right
+  // beHappy("xxbbbxxb") returns false
+  //
+  // Precondition: all characters are lower case
+  function beHappy(str) {
+    var count = 0;
+    var meta = 0;
+    if (str.length == 0) {
+      return true;
+    }
+  	for (var i = 0; i < str.length; i++) {
+  	  if (str[i] == "b") {
+        if (str[i+1] == "b") {
+          count += 1;
+        }
+        else if (count > 0){
+          count = 0;
+        }
+        else if (count == 0){
+          meta += 1;
+        }
+  	  }
+  	}
+    if (meta > 0){
+      return false;
+    }
+    else if (count > 0) {
+      return true;
+    }
+    return true;
+  }
+  // One test case. Your browser should show true, not false
+  document.write(beHappy('') + '<br>');
+  document.write(beHappy('xxbbxx') + '<br>');
+  document.write(beHappy('xxbbbxyz') + '<br>');
+  document.write(!beHappy('b') + '<br>');
+  document.write(!beHappy('xxbxx') + '<br>');
+  document.write(!beHappy('qrbbstbuv') + '<br>');
+  document.write(!beHappy('bxxbbbxx') + '<br>');
+  document.write(!beHappy('xxbbbxxb') + '<br>');
+  document.write(beHappy('aaaaaddsfjdskl') + '<br><br>');
+
+ </script>
+
+</body>
+</html>

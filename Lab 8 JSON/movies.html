@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--
+Programmer: Alec Mire
+Lab 8: JSON
+
+This is a starter file that includes all the styles you
+will need for the table to show alternating backgrounds.
+ -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Movie Titles</title>
+<style>
+tr:nth-child(even) {
+	background-color: #f2f2f2
+}
+
+table, th, td {
+	border: 1px solid black;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+td {
+	padding: 5px;
+}
+</style>
+</head>
+<body>
+
+<button type="button" onclick="showMovies()">Show Movie Titles</button>
+<br>
+<div id="divToChange">?</div>
+
+<script>
+function showMovies () {
+  var element = document.getElementById("divToChange");
+  // TODO 1: create the XMLHttpRequest object, open the php file and senb
+  var xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("GET", "movies.php", true);
+	xmlhttp.send();
+  xmlhttp.onreadystatechange = function(){
+    if (xmlhttp.status == 200) {
+      var array = JSON.parse(xmlhttp.responseText);
+      for (var i = 0; i < array.length; i++) {
+        document.write(array[i] + '<br>');
+      }
+    }
+  }
+
+
+  var movies = '';
+  // TODO 2: Add the Javascript code to create a string of all movies
+  // in the array with <br> after each.  Start with the anonymous function.
+  var myNew = '';
+  myNew = function(){
+    for (var i = 0; i < xmlhttp.length; i++) {
+        document.write(array[i] + '<br>');
+    }
+  }
+  element.innerHTML = movies;
+}
+</script>
+</body>
+</html>

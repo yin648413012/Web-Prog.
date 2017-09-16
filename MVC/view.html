@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--
+Allow the user to enter a year to see all data base
+records that were released in that year or later
+
+Author: Alec Mire
+-->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Movies</title>
+</head>
+<body>
+	<strong>Search for either all roles or all actors in the database imdb_small</strong>
+	<hr>
+	Search string<br>
+	<input type="text" id="string"><br>
+	<button type="button" onclick="getActors()" id="actors">Actors</button>
+	<button type="button" onclick="getRoles()" id="roles">Roles</button><hr>
+	<div id="toChange"></div>
+
+	<script>
+		var divToChange = document.getElementById("toChange");
+		function getActors() {
+			var anObj = new XMLHttpRequest();
+			var string = document.getElementById("string").value;
+			anObj.open("GET", "controller.php?string=" + string + "&function=actor", true);
+			anObj.send();
+
+
+			anObj.onreadystatechange = function() {
+				if (anObj.readyState == 4 && anObj.status == 200) {
+					var array = JSON.parse(anObj.responseText);
+					var str = "";
+					for (i = 0; i < array.length; i++)
+						str += array[i]['first_name'] + " " + array[i]['last_name'] + "<br>";
+					divToChange.innerHTML = str;
+				}
+			}
+		}
+
+
+		function getRoles() {
+			var anObj = new XMLHttpRequest();
+			var string = document.getElementById("string").value;
+			anObj.open("GET", "controller.php?string=" + string + "&function=role", true);
+			anObj.send();
+
+			anObj.onreadystatechange = function() {
+				if (anObj.readyState == 4 && anObj.status == 200) {
+					var array = JSON.parse(anObj.responseText);
+					var str = "";
+					for (i = 0; i < array.length; i++)
+						str += array[i]['role'] + "<br>";
+					divToChange.innerHTML = str;
+				}
+			}
+		}
+	</script>
+
+</body>
+</html>

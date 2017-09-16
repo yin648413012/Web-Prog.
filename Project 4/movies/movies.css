@@ -1,0 +1,149 @@
+/*
+movie.css was created by Alec Mire
+Completed: 11:33 PM  **  1/25/2017
+
+Browser: Chrome
+Resolution: 4K
+Screen Size: 15" (laptop)
+W3C CSS Validator: No Errors/Warnings
+*/
+
+
+#banner {
+  background: url("images/rancidbannerbg.png") repeat-x;
+}
+
+ul {
+  list-style-type: none;
+}
+
+dt {
+  font-weight: bold;
+  padding: 5px;
+}
+
+dd, dt {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+#main .info {
+  position: relative;
+  width: 250px;
+	background-color: darkseagreen;
+  border-bottom-right-radius: 25px;
+  top: -1842px;
+  left: 550px;
+  font-family: sans-serif;
+  height: 819px;
+  font-size: 10pt;
+}
+
+#main .overview {
+  position: relative;
+  width: 250px;
+  top: -98px;
+  left: 550px;
+}
+
+.overview {
+  width: 10px;
+  border-top-right-radius: 25px;
+}
+
+.overview img {
+  border-top-right-radius: 25px;
+}
+
+.s1 {
+  position: relative;
+  top: -450px;
+  left: 275px;
+}
+
+.s2 {
+  position: relative;
+  width: 275px;
+  text-align: justify;
+  top: -1285px;
+}
+
+h1 {
+  text-shadow: 2px 2px dimgray;
+  font-size: 24pt;
+  font-family: serif;
+  font-weight: bold;
+  text-align: center;
+}
+
+#rating {
+  position: relative;
+  background: url("images/rottenlargebg.png") repeat-x;
+  color: red;
+  font-weight: bold;
+  font-family: sans-serif;
+  font-size: 48pt;
+  width: 550px;
+  text-align: left;
+}
+
+#rating_percent {
+  position: absolute;
+  top: 10%;
+  left: 25%;
+}
+
+/*#rating_percent {
+  display: table-cell;
+  vertical-align: middle;
+  margin-left: -300px;
+}*/
+
+#main .review1 {
+  position: relative;
+  font-size: 10pt;
+  border-style: solid;
+  background-color: white;
+  border-width: 2px;
+  border-color: darkgray;
+  border-radius: 20px;
+  width: 250px;
+  padding: 8px;
+  top: -435px;
+  left: 275px;
+  font-family: serif;
+}
+
+ .review2 {
+  position: relative;
+  font-size: 10pt;
+  border-style: solid;
+  background-color: white;
+  border-width: 2px;
+  border-color: darkgray;
+  border-radius: 20px;
+  width: 250px;
+  text-align: justify;
+  top: -1270px;
+  font-family: serif;
+  padding: 8px;
+  margin: 2px;
+}
+
+#main {
+  background-color: lightgray;
+  width: 800px;
+  margin: auto;
+  border-radius: 25px;
+  height: 1223px;
+  box-shadow: 10px 10px 10px gray;
+}
+
+body {
+  margin-left: 0px;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  height: 100%;
+  background-color: #c2cd89;
+}

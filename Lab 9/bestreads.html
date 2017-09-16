@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<!--
+Programmer: Alec Mire
+
+CSC 337: Project Best Reads (CONVERTED INTO LAB 9)
+
+Use this file as a starter and add the JavaScript code in the <script> block below.
+Do not change the names of the php file or the image books.jpeg.
+-->
+<head>
+<title>Best Reads</title>
+<style>
+
+#allbooks div {
+	background-color: #f4f1eb;
+	float: left;
+	margin: 3%;
+}
+
+#allbooks img {
+	height: 220px;
+	width: 150px;
+	margin: 50px;
+}
+
+body {
+	background-color: #fefcf4;
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+	margin: 0px;
+}
+
+.header {
+	background-image: url("books.jpeg");
+	box-shadow: 0 5px 5px lightgray;
+	height: 104px;
+	position: relative;
+}
+
+</style>
+</head>
+<body onload="showAllBooks()">
+
+<div class="header">
+   <!-- Place background image here  -->
+</div>
+
+<br>
+   <button type="button" onclick="showBestReads()">Show Movie Titles</button>
+<br>
+<div id="allbooks"></div>
+
+
+<script>
+// TODO: Use the AJAX approach to show all book covers using the file bestreads.php.
+// You must use JSON.parse(xhttp.responseText);
+	function showBestReads() {
+		var element = document.getElementById("allbooks");
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.open("GET", "bestreads.php", true);
+		xmlhttp.send();
+		xmlhttp.onreadystatechange = function(){
+			if (xmlhttp.status == 200) {
+				var array = JSON.parse(xmlhttp.responseText);
+				for (var i = 0; i < array.length; i++) {
+					console.log('<img src="books/' + array[i] + '/cover.jpg">');
+					element.innerHTML += '<img src="books/' + array[i] + '/cover.jpg">';
+				}
+			}
+		}
+	}
+
+</script>
+
+</body>
+</html>
