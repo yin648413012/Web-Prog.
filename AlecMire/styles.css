@@ -1,0 +1,29 @@
+#head, #bottom{
+  background-color: blue;
+  color: white;
+  width: 750px;
+  text-align: center;
+}
+
+#section {
+  height: 400px;
+  width: 600px;
+}
+
+#head {
+  font-size: 20pt;
+}
+
+#bottom {
+  font-size: 16pt;
+}
+
+#content {
+  float: left;
+  background-color: silver;
+  height: 405px;
+}
+
+button {
+  margin: 8px;
+}

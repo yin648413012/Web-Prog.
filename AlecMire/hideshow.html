@@ -1,0 +1,34 @@
+ <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Hide/Show</title>
+  </head>
+  <body>
+    <script>
+    var count = 1;
+    function userFunction(){
+      var action = document.getElementById('updateButton');
+      var actionTBD = document.getElementById('updateButton').value;
+      var element = document.getElementById('updateText');
+      if (count % 2 != 0) {
+        action.innerHTML = "<button type='button' onclick='userFunction()'>Show</button>";
+        element.innerHTML = " ";
+      }
+      else {
+        action.innerHTML = "<button type='button' onclick='userFunction()'>Hide</button>";
+        element.innerHTML = "This text will appear and disappear";
+      }
+      count += 1;
+    }
+    </script>
+    <p id="updateButton">
+    <button type="button" onclick="userFunction()">
+        Hide</button>
+      </p>
+      <p id="updateText">
+        This text will appear and disappear
+      </p>
+
+  </body>
+</html>

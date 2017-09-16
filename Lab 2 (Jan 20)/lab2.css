@@ -1,0 +1,55 @@
+dt {
+  font-style: italic;
+  font-weight: bold;
+}
+
+dd, dt {
+  font-family: Arial;
+}
+
+.definitionlist {
+  float: right;
+  border-style: outset;
+  margin: 10px;
+  height: 450px;
+  width: 220px;
+  border-width: thick;
+}
+
+.smallerContainer {
+  border-style: solid;
+  border-color: pink;
+  color: green;
+  width: 270px;
+  height: 370px;
+  margin: 15px;
+  float: left;
+  border-width: thick;
+}
+
+.container {
+  background-color: lightgrey;
+  height: 500px;
+  width: 860px;
+}
+
+.roundedBlock {
+  border-style: solid;
+  border-radius: 25px;
+  background-color: aqua;
+  border-color: white;
+  padding: 10px;
+  margin: 10px;
+  border-width: thick;
+  width: 90px;
+}
+
+.partialhead {
+  border-style: solid;
+  border-color: yellow;
+  font-size: 2em;
+  color: blue;
+  width: 600px;
+  margin: 10px;
+  border-width: thick;
+}

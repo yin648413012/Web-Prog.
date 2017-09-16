@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Running Sum</title>
+  </head>
+  <body>
+    <script>
+    var list = [];
+    function runningSum(){
+      var element = document.getElementById("tochange");
+      var number = document.getElementById("number").value;
+      var test = document.getElementById("btnSearch").value;
+      list.push(number);
+      var sum = 0;
+      for (var i = 0; i < list.length; i++) {
+        sum += Number(list[i]);
+      }
+      element.innerHTML = "sum of [" + list + "] = " + sum;
+      number.value = '';
+      test.value = '';
+    }
+    </script>
+    Enter a number: <input type="text" id="number" onkeydown = "if (event.keyCode == 13){document.getElementById('btnSearch').click()}">
+    <input id="btnSearch" style="position: absolute; left: -9999px;" type="button" onclick="runningSum()" value="qwerty"><br>
+    <p id="tochange">
+      sum of [] = 0
+    </p>
+  </body>
+</html>

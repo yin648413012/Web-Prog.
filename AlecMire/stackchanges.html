@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Stack Changes</title>
+    <style>
+    #btnSearch{
+    position: absolute;
+    left: -9999px;
+  }
+    </style>
+  </head>
+  <body>
+
+
+
+    Push <input type="text" style="width: 100px;" id="push" onkeydown = "if (event.keyCode == 13){document.getElementById('btnSearch').click()}">
+    <button type="button" style="width: 50px;" value="Pop" onclick="pop()">Pop</button>
+    <input id="btnSearch" type="button" onclick="push()" value="exit"><br>
+    <p id="tochange">
+    </p>
+    <script>
+    var stack = [];
+    var usrString = '';
+    var element = document.getElementById('tochange');
+    function push(){
+      usrString = '<ul>';
+      var number = Number(document.getElementById('push').value);
+      stack.push(number);
+      for (var i = 0; i < stack.length; i++) {
+        usrString += '<li>' + String(stack[stack.length - i - 1]) + '</li>';
+
+      }
+      usrString += '</ul>';
+      console.log(usrString);
+      element.innerHTML = usrString;
+      console.log(number);
+      console.log(stack);
+    }
+
+    function pop(){
+      usrString = "<ul>";
+      stack.pop();
+      console.log(stack);
+      for (var i = 0; i < stack.length; i++) {
+        usrString += "<li>" + String(stack[stack.length - i - 1]) + "</li>";
+      }
+      usrString += "</ul>";
+      element.innerHTML = usrString;
+    }
+
+
+
+    console.log(usrString);
+    console.log("user string above");
+
+
+
+    </script>
+
+  </body>
+</html>

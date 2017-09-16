@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Growing Image</title>
+    <style>
+    img{
+      height: 60px;
+      margin: 5px;
+    }
+    </style>
+  </head>
+  <body>
+    <script>
+    var count = 60;
+    function grow(){
+      count += 5;
+      var block = document.getElementById("block");
+      block.style.height = count + "px";
+      console.log(count);
+    }
+    </script>
+    Click the image to see it grow<br>
+    <img src="tucson.jpg" id="block" alt="Tucson" onclick="grow()">
+  </body>
+</html>

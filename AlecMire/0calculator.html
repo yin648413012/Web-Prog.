@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Calculator TI-9000</title>
+  </head>
+  <body>
+    <h4>Calculator</h4>
+    <div>
+    x <input type='text' id="x" pattern='[1-5]' required/><br>
+    y <input type='text' id='y' pattern='[1-5]' required/><br>
+    <button onclick="calculate()">Show results</button><br>
+    </div>
+    <p id="toChange">
+      This element will be changed to the password entered
+    </p>
+
+
+<script>
+function calculate() {
+  var element = document.getElementById('toChange');
+  var x = document.getElementById('x').value;
+  var y = document.getElementById('y').value;
+  x = Number(x);
+  y = Number(y);
+  element.innerHTML = x + " + " + y + " = " + (x+y) + "<br>" +
+                      x + " - " + y + " = " + (x-y) + "<br>" +
+                      x + " * " + y + " = " + (x*y) + "<br>" +
+                      x + " / " + y + " = " + (x/y) + "<br>" +
+                      x + " % " + y + " = " + (x%y);
+  element.style.border="solid thick";
+  element.style.width="225px";
+  element.style.borderColor="red";
+  element.style.padding="11px";
+  element.style.backgroundColor="black";
+  element.style.color="white";
+
+}
+</script>
+
+  </body>
+</html>

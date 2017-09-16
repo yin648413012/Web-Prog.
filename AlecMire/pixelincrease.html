@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Pixel Increase</title>
+  </head>
+  <body>
+    <script>
+    var count = 16;
+    function grow(){
+      count += 1;
+      var block = document.getElementById("block");
+      block.style.fontSize = count + "px";
+    }
+    </script>
+    <button type="button" onclick="grow()">
+      Increment by 1px
+    </button>
+    <div id="block">
+      Increase my point size by 1px each click.
+    </div>
+  </body>
+</html>
